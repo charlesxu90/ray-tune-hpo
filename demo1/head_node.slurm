@@ -8,7 +8,7 @@
 #SBATCH --time=00:30:00
 
 source ~/miniconda3/etc/profile.d/conda.sh
-conda activate ./.env
+conda activate /home/xux/work/ray-tune-hpo/.env
 
 #Requested number of workers
 if [ -z ${NUM_WORKERS} ] ; then

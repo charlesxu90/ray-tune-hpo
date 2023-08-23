@@ -6,9 +6,9 @@
 #SBATCH --tasks-per-node=1
 #SBATCH --cpus-per-task=8
 #SBATCH --time=00:30:00
-#SBATCH --account=ibex-cs
 
-source ~/miniconda3/bin/activate ray_demo
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate /home/xux/work/ray-tune-hpo/.env
 
 export XDG_RUNTIME_DIR=$PWD 
 NUM_CPUS=${SLURM_CPUS_PER_TASK}
