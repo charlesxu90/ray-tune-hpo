@@ -6,9 +6,10 @@
 #SBATCH --tasks-per-node=1
 #SBATCH --cpus-per-task=4
 #SBATCH --time=00:30:00
-#SBATCH --account=ibex-cs
 
-source /ibex/ai/home/shaima0d/miniconda3/bin/activate ray2_2
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate /home/xux/work/ray-tune-hpo/.env
+
 #Requested number of workers
 if [ -z ${NUM_WORKERS} ] ; then
   NUM_WORKERS=1
