@@ -7,9 +7,9 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
 #SBATCH --time=00:30:00
-#SBATCH --account=ibex-cs
 
-source /ibex/ai/home/shaima0d/miniconda3/bin/activate ray2_2
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate ./.env
 
 
 export ip_head=$(cat ./head_node_info | cut -d " " -f 1)
