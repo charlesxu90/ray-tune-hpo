@@ -6,7 +6,7 @@
 #SBATCH --error=%x-%J.out
 
 source ~/miniconda3/etc/profile.d/conda.sh
-conda activate ./.env
+conda activate /home/xux/work/ray-tune-hpo/.env
 
 export server_port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 export dashboard_port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
