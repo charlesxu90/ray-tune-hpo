@@ -12,7 +12,7 @@ cd hello_world_demo/
 sbatch head_node.slurm 
 ```
 
-## Interactive HPO in slurm cluster
+## Jupyter HPO in slurm cluster
 ```shell
 cd jupyter_demo/
 

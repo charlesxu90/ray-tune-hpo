@@ -21,9 +21,8 @@ export ip_head=$(cat ./head_node_info | cut -d " " -f 1)
 export head_node_ip=$(echo ${ip_head} | cut -d ":" -f 1)
 export redis_password=$(cat ./head_node_info | cut -d " " -f 2)
 
-ray start --address ${ip_head}  --redis-password ${redis_password} \
-	--num-cpus ${NUM_CPUS_PER_NODE} --num-gpus ${NUM_GPUS_PER_NODE} \
-	--block &
+ray start --address ${ip_head}  --redis-password ${redis_password} --num-cpus ${NUM_CPUS_PER_NODE} --num-gpus ${NUM_GPUS_PER_NODE} --block &
+
 sleep 20
 ray status --address ${ip_head} --redis_password ${redis_password}
 sleep 10

@@ -17,18 +17,16 @@ else
   NUM_WORKERS=${NUM_WORKERS}
 fi
 
-
-
 export server_port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 export dashboard_port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 export tensorboard_port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 export node=$(/bin/hostanme -s)
+
 echo "
 Connect to dashboard by creating SSH tunnels. Copy the following command in a new terminal
 and connect to localhost via your browser.
 ssh -L localhost:${dashboard_port}:${node}:${dashboard_port} -L localhost:${tensorboard_port}:${node}:${tensorboard_port} ${USER}@glogin.ibex.kaust.edu.sa
 "
-
 
 export TB_TMPDIR=$PWD/tboard/${SLURM_JOBID}
 mkdir -p ${TB_TMPDIR}
@@ -37,7 +35,6 @@ export redis_password=${SLURM_JOBID}
 export head_node_ip=$(hostname -I | cut -d " " -f 2)
 export ip_head=${head_node_ip}:${server_port}
 echo "${ip_head} ${redis_password} ${dashboard_port}" > head_node_info
-
 
 ray start --node-ip-address ${head_node_ip} --port ${server_port} --redis-password=${redis_password} --head  \
 	--dashboard-port ${dashboard_port} --dashboard-host=127.0.0.1 \
@@ -57,19 +54,14 @@ do
         sleep 20
 done
 
-
 python -u ray_mnist_pytorch.py --use-gpu \
           --cpus-per-trial=4 --gpus-per-trial=1 \
           --num-samples=50 \
           --max-concurrent-trials=32 
           
-
-
 # Shutdown workers before the head node
 touch $PWD/shutdown.txt
 sleep 20
 echo " Stopping ray on Head node: $(/bin/hostname)"
 ray stop
 rm $PWD/shutdown.txt
-
- 
