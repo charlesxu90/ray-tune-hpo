@@ -26,8 +26,8 @@ echo "${ip_head} ${redis_password} ${dashboard_port}" > head_node_info
 
 
 ray start --node-ip-address ${head_node_ip} --port ${server_port} --redis-password=${redis_password} --head  \
-	--dashboard-port ${dashboard_port} --dashboard-host=$HOSTNAME \
-        --num-cpus ${SLURM_CPUS_PER_TASK} --block &
+	--dashboard-port ${dashboard_port} --dashboard-host=$HOSTNAME --num-cpus ${SLURM_CPUS_PER_TASK} --block &
+  
 sleep 20
 job_ids=()
 for (( i=1; i<=${NUM_WORKERS}; i++ ))
