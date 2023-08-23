@@ -4,9 +4,9 @@
 #SBATCH --job-name=ray_server
 #SBATCH --output=%x-%J.out
 #SBATCH --error=%x-%J.out
-#SBATCH --account=ibex-cs
 
-source /ibex/ai/home/shaima0d/miniconda3/bin/activate ray2_2
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate ./.env
 
 export server_port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 export dashboard_port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
