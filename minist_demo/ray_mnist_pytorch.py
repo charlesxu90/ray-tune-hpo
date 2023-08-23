@@ -93,8 +93,6 @@ def train_mnist(config, checkpoint_dir=None):
     use_cuda = config.get("use_gpu") and torch.cuda.is_available()
     device = torch.device("cuda" if use_cuda else "cpu")
     train_loader, test_loader = get_data_loaders()
-    
-    
         
     model = ConvNet().to(device)
     

@@ -8,9 +8,9 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --time=00:30:00
 #SBATCH --gpus=4
-#SBATCH --account=ibex-cs
 
-source /ibex/ai/home/shaima0d/miniconda3/bin/activate ray2_2
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate /home/xux/work/ray-tune-hpo/.env
 
 export NUM_CPUS_PER_NODE=${SLURM_CPUS_PER_TASK}
 export NUM_GPUS_PER_NODE=4
