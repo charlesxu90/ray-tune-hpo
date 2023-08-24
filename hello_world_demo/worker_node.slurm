@@ -9,7 +9,7 @@
 #SBATCH --time=00:30:00
 
 source ~/miniconda3/etc/profile.d/conda.sh
-conda activate /home/xux/work/ray-tune-hpo/.env
+conda activate /ibex/user/xux/pep-pred/env
 
 export ip_head=$(cat ./head_node_info | cut -d " " -f 1)
 export head_node_ip=$(echo ${ip_head} | cut -d ":" -f 1)
