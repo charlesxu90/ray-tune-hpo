@@ -17,5 +17,7 @@ dependencies:
     - jupyterlab
     - pip:
       - ray==2.2
-      - ray[tune,rllib,serve]
+      - ray[tune]
+      - ray[rllib]
+      - ray[serve]
       - wandb
